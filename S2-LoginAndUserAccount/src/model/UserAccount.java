@@ -2,7 +2,7 @@ package model;
 
 import javafx.scene.image.Image;
 
-import java.awt.*;
+
 
 public class UserAccount {
     private String username;
@@ -13,14 +13,14 @@ public class UserAccount {
     private  String browser;
     private Image profile;
 
-    public UserAccount(String username, String password, String gender, String career, String birthday, String browser) {
+    public UserAccount(String username, String password, String gender, String career, String birthday, String browser, Image profile) {
         this.username = username;
         this.password = password;
         this.gender = gender;
         this.career = career;
         this.birthday = birthday;
         this.browser = browser;
-        profile = null;
+        this.profile = profile;
     }
 
     public String getUsername() {
@@ -46,11 +46,14 @@ public class UserAccount {
     public String getBrowser() {
         return browser;
     }
+
     public Image getProfile(){
+       // System.out.println("Entrocsm");
         return profile;
     }
 
-    public void setProfile(Image profile){
-        this.profile=profile;
+    public void setProfile(Image nProfile){
+        //System.out.println("Set done");
+        profile=nProfile;
     }
 }

@@ -7,13 +7,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import model.Classroom;
 import model.UserAccount;
 
 
+import java.io.File;
 import java.io.IOException;
 
 public class ClassroomGUI {
@@ -67,6 +70,9 @@ public class ClassroomGUI {
     private Pane pClassroom;
 
     @FXML
+    private Button browse;
+
+    @FXML
     private TableView<UserAccount> classroomIn;
 
     @FXML
@@ -90,12 +96,37 @@ public class ClassroomGUI {
     @FXML
     private Label txtUserIn;
 
+    private  Image imageProfile;
+
     private  UserAccount account;
     private  Classroom classroomGUI;
 
     public  ClassroomGUI(Classroom classroomG){
 
         classroomGUI = new Classroom();
+    }
+
+    @FXML
+    public void browseFileToChoose(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select a image");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
+        Stage primaryStage = (Stage)mainPane.getScene().getWindow();
+        File fileToSave = fileChooser.showOpenDialog(primaryStage);
+        imageProfile = new Image(fileToSave.toURI().toString());
+
+
+        if(imageProfile != null){
+            txtPhotoUrl.setText(fileToSave.getPath().toString());
+
+        }else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText(null);
+            alert.setContentText("Not found");
+            alert.showAndWait();
+            txtPhotoUrl.setText("");
+        }
     }
 
     private void initializeClassroom(){
@@ -108,6 +139,7 @@ public class ClassroomGUI {
         colCareer.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("career"));
         colBirthday.setCellValueFactory(new PropertyValueFactory<UserAccount, String>("birthday"));
         colBrowser.setCellValueFactory(new PropertyValueFactory<UserAccount, String>("browser"));
+        profilephoto.setImage(classroomGUI.currentImage(txtUsername1.getText()));
 
     }
 
@@ -144,7 +176,6 @@ public class ClassroomGUI {
             if (classroomGUI.canLogin(txtUsername1.getText() , txtPassword1.getText())){
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Classroom.fxml"));
                 loader.setController(this);
-
                 Parent Screen2 = loader.load();
                 txtUserIn.setText(txtUsername1.getText());
                 mainPane.getChildren().setAll(Screen2);
@@ -165,20 +196,22 @@ public class ClassroomGUI {
     }
 
     @FXML
-    public void create(ActionEvent event){
+    public void create(ActionEvent event) throws IOException {
         String user, passW, career , bDay , browser , gender;
         career="";
         user = txtUsername.getText();
         passW = txtPassword.getText();
-        gender="";
+        gender="null";
 
         if(male.isSelected()){
             gender = "Male";
-        }else if(female.isPressed()){
+        }else if(female.isSelected()){
            gender = "Female";
+           //System.out.println(gender);
         }else if(other.isSelected()){
            gender = "Other";
         }
+        //System.out.println(gender);
 
         if(sis.isSelected()){
            career = "Software Systems Engineer";
@@ -191,7 +224,7 @@ public class ClassroomGUI {
         }
         if (UserBirthday.getValue()!=null) {
             bDay = UserBirthday.getValue().toString();
-            System.out.println(bDay);
+            //System.out.println(bDay);
         }else {
             bDay = "";
         }
@@ -201,11 +234,11 @@ public class ClassroomGUI {
         }else {
             browser="";
 
+
         }
 
 
-
-        if(user.equals("") || passW.equals("") ||  gender.equals("") || career.equals("") || bDay.equals("") || browser.equals("")){
+        if(user.equals("") || passW.equals("") || browse.isPressed() ||gender.equals("") || career.equals("") || bDay.equals("") || browser.equals("")){
 
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
@@ -214,15 +247,19 @@ public class ClassroomGUI {
             alert.showAndWait();
 
         }else {
-            UserAccount newAccount = new UserAccount(user,passW ,gender, career,bDay,browser);
+            UserAccount newAccount = new UserAccount(user,passW ,gender, career,bDay,browser, imageProfile);
+            //newAccount.setProfile(imageProfile);
+            imageProfile=null;
             classroomGUI.addAccount(newAccount);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Done");
             alert.setHeaderText(null);
             alert.setContentText("The new account has been created!");
             alert.showAndWait();
+
         }
 
+        ScreateAnAccount(event);
 
     }
 

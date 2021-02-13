@@ -1,5 +1,7 @@
 package model;
 
+import javafx.scene.image.Image;
+
 import  java.util.ArrayList;
 public class Classroom {
     private  ArrayList<UserAccount> accounts;
@@ -26,6 +28,23 @@ public class Classroom {
             }
         }
         return can;
+    }
+
+    public Image currentImage(String name){
+        boolean out=false;
+        Image image = null;
+        for (int i = 0; i <accounts.size() && !out ; i++) {
+            if((accounts.get(i).getUsername()).equals(name)){
+               image = (accounts.get(i).getProfile());
+                out=true;
+                //System.out.println("Entrocsm");
+
+            }
+
+        }
+
+        return image;
+
     }
 
 
