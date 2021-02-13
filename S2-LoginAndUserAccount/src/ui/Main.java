@@ -28,8 +28,10 @@ public class Main extends Application {
         loader.setController(gui);
         Parent root = loader.load();
 
+
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Classroom");
         primaryStage.show();
 
 

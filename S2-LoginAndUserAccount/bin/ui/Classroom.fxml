@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane prefHeight="424.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="classroomIn" layoutX="-2.0" layoutY="109.0" prefHeight="315.0" prefWidth="598.0">
+         <columns>
+            <TableColumn fx:id="colUsername" prefWidth="119.0" text="Usermane" />
+            <TableColumn fx:id="colGender" prefWidth="116.0" text="Gender" />
+            <TableColumn fx:id="colCareer" prefWidth="114.0" text="Career" />
+            <TableColumn fx:id="colBirthday" prefWidth="119.0" text="Bithday" />
+            <TableColumn fx:id="colBrowser" prefWidth="130.0" text="Browser" />
+         </columns>
+      </TableView>
+      <ImageView fx:id="profilephoto" fitHeight="86.0" fitWidth="111.0" layoutX="297.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="442.0" layoutY="40.0" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="87.0" text="Log out" />
+      <Label fx:id="txtUserIn" layoutX="166.0" layoutY="53.0" text="Genericname" />
+   </children>
+</Pane>

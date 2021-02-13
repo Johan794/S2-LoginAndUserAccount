@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="392.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <Pane fx:id="pClassroom" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="645.0">
+         <children>
+            <Pane layoutX="86.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="556.0" prefWidth="423.0">
+               <children>
+                  <Label contentDisplay="CENTER" layoutX="142.0" layoutY="30.0" text="Join Classroom">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="113.0" text="Username:" />
+                  <Label alignment="CENTER" layoutX="41.0" layoutY="154.0" text="Password:" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="198.0" text="Profile photo:" />
+                  <Label alignment="CENTER" layoutX="38.0" layoutY="252.0" text="Gender:" />
+                  <Label alignment="CENTER" layoutX="40.0" layoutY="288.0" text="Career:" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="44.0" layoutY="386.0" text="Birthday:" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="44.0" layoutY="436.0" text="Favorite browser" />
+                  <TextField fx:id="txtUsername" layoutX="143.0" layoutY="113.0">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtPassword" layoutX="143.0" layoutY="154.0" prefHeight="21.0" prefWidth="129.0">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtPhotoUrl" layoutX="143.0" layoutY="198.0">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </TextField>
+                  <ChoiceBox fx:id="favoriteBrowser" layoutX="189.0" layoutY="431.0" prefHeight="26.0" prefWidth="103.0" />
+                  <Label contentDisplay="CENTER" layoutX="92.0" layoutY="60.0" text="Create an Account">
+                     <font>
+                        <Font name="Liberation Sans Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="294.0" layoutY="193.0" mnemonicParsing="false" text="Browse" />
+                  <CheckBox fx:id="sis" alignment="CENTER" contentDisplay="CENTER" layoutX="105.0" layoutY="287.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Software Systems Engineering" />
+                  <CheckBox fx:id="tel" alignment="CENTER" contentDisplay="CENTER" layoutX="105.0" layoutY="314.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Telematic Engineering" />
+                  <CheckBox fx:id="Indus" alignment="CENTER" contentDisplay="CENTER" layoutX="105.0" layoutY="341.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="18.0" prefWidth="168.0" text="Industrial Engineering" />
+                  <DatePicker fx:id="UserBirthday" layoutX="129.0" layoutY="381.0" prefHeight="26.0" prefWidth="183.0" promptText="choose an option">
+                     <padding>
+                        <Insets left="8.0" />
+                     </padding>
+                  </DatePicker>
+                  <Button contentDisplay="CENTER" layoutX="29.0" layoutY="491.0" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="144.0" text="Create and log in" />
+                  <Button contentDisplay="CENTER" layoutX="208.0" layoutY="491.0" mnemonicParsing="false" onAction="#create" prefHeight="26.0" prefWidth="133.0" text="Create Account" />
+                  <RadioButton fx:id="male" contentDisplay="CENTER" layoutX="101.0" layoutY="251.0" mnemonicParsing="false" text="Male">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="gender" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="other" contentDisplay="CENTER" layoutX="260.0" layoutY="252.0" mnemonicParsing="false" text="Other" toggleGroup="$gender">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="female" contentDisplay="CENTER" layoutX="172.0" layoutY="250.0" mnemonicParsing="false" text="Female" toggleGroup="$gender" />
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Pane>
+         </children>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Pane>
+   </content>
+</ScrollPane>
